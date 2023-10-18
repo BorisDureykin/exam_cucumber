@@ -35,7 +35,7 @@ public class WebHooks {
     @After
     public void afterClass() {
 
-//        saveScreenshot("Screenshot After Test ");
+        saveScreenshot("Screenshot After Test ");
         WebDriverRunner.closeWebDriver();
         SelenideLogger.removeListener("Allureselenide");
     }

@@ -4,8 +4,13 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/feature/GuiEdujira.feature",
-        glue = {"objects/steps/gui_edu_jira","objects/steps/api_edu_jira", "hooks"},
+@CucumberOptions(features = "src/test/resources/feature",
+        glue = {"objects/steps/api_edu_jira",
+                "objects/steps/api_rick_and_morty",
+                "objects/steps/api_reqres",
+                "objects/steps/api_all_request_respone",
+                "objects/steps/gui_edu_jira",
+                "hooks"},
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         plugin = {"pretty",
                 "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm",
@@ -13,5 +18,5 @@ import org.junit.runner.RunWith;
                 "html:target/test-output"}
 )
 
-public class GuiEduJiraRunnerTest {
+public class RunnerTest {
 }

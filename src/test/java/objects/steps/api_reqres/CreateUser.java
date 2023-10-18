@@ -1,9 +1,15 @@
 package objects.steps.api_reqres;
 
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.ru.Дано;
+import io.cucumber.java.ru.Тогда;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import objects.steps.api_all_request_respone.ResponseAllTests;
+
+import java.util.List;
+import java.util.Map;
 
 import static hooks.WebHooks.saveMessage;
 import static objects.steps.api_all_request_respone.RequestSpecificationAllTests.requestSpecificationAllTests;
@@ -14,10 +20,33 @@ import static util.Config.getConfigValue;
 
 public class CreateUser extends ResponseAllTests {
 
-    @Step("Создание пользователя с именем: \"{nameValue}\", и job: \"{jobValue}\"")
-    public static void createUser(String keyUrl, String nameValue, String jobValue,  String endpoint, String method, String statusCode, String pathSchema) {
+    private static String keyUrl;
+    private static String endpoint;
+    private static String method;
+    private static String statusCode;
+    private static String pathSchema;
+    private static String nameValue;
+    private static String jobValue;
 
-        String url = getConfigValue(keyUrl);
+    @Дано("Параметры создания пользователя:")
+    public void setDataTable(DataTable table) {
+        List<Map<String, String>> parameters = table.asMaps(String.class, String.class);
+        Map<String, String> params = parameters.get(0);
+        keyUrl = params.get("keyUrl");
+        endpoint = params.get("endpoint");
+        method = params.get("method");
+        statusCode = params.get("statusCode");
+        pathSchema = params.get("pathSchema");
+        nameValue = params.get("nameValue");
+        jobValue = params.get("jobValue");
+    }
+
+
+    @Step("Создание пользователя с именем: \"{nameValue}\", и job: \"{jobValue}\"")
+    @Тогда("Отправляем запрос на создание пользователя и проверяем полученный ответ")
+    public static void createUser() {
+
+       String url = getConfigValue(keyUrl);
 
         RequestSpecification request = requestSpecificationAllTests(url);
 

@@ -1,5 +1,6 @@
 package objects.steps.api_reqres;
 
+import io.cucumber.java.ru.Когда;
 import io.qameta.allure.Step;
 import org.json.JSONObject;
 
@@ -15,6 +16,7 @@ public class UpdateJsonObject {
     private JSONObject newUserJson;
 
     @Step("Создание body с новыми значениями name: \"{nameValue}\", job: \"{jobValue}\"")
+    @Когда("Изменяем в файле {string} name на: {string} и добавляем поле job с значением {string}")
     public static void updateJsonObject(String filePath, String nameValue, String jobValue) {
         instance = new UpdateJsonObject();
         try {

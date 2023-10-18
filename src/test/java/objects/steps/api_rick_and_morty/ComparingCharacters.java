@@ -1,5 +1,9 @@
 package objects.steps.api_rick_and_morty;
 
+import io.cucumber.java.ru.Затем;
+import io.cucumber.java.ru.И;
+import io.cucumber.java.ru.Когда;
+import io.cucumber.java.ru.Тогда;
 import io.qameta.allure.Step;
 import io.restassured.specification.RequestSpecification;
 
@@ -20,20 +24,23 @@ public class ComparingCharacters {
 
 
     @Step("Получение характеристик персонажа с ID: {characterId}")
+    @Когда("Получаем на сайте {string} характеристики персонажа с ID: {string}")
     public static void getDataCharacter1(String keyUrl, String characterId){
         request = requestSpecificationAllTests(getConfigValue(keyUrl));
         getCharacter1 = getCharacter(characterId, request);
     }
 
-    @Step("получили номер последнего эпизода")
+    @Step("Получаем номер последнего эпизода")
+    @Тогда("Получаем номер последнего эпизода")
     public static void getLastEpisodeNumber(){
         lastEpisodeNumber = getCharacter1.getLastEpisodeNumber();
         String message = "Номер последнего эпизода где появлялся персонаж: "+lastEpisodeNumber;
         saveMessage("Номер последнего эпизода" ,message);
     }
 
+    @Тогда("Получаем номер номер последнего персонажа в эпизоде")
     public static void getLastCharacterId() {
-        step("Получение номер последнего персонажа в эпизоде: \"" + lastEpisodeNumber, () -> {
+        step("Получаем номер последнего персонажа в эпизоде: \"" + lastEpisodeNumber, () -> {
             characterId2 = getEpisode(lastEpisodeNumber, request);
             String message = "В эпизоде: "+lastEpisodeNumber+ "Номер последнего персонажа: "+characterId2;
             saveMessage("Номер последнего персонажа" ,message);
@@ -41,7 +48,8 @@ public class ComparingCharacters {
     }
 
 
-    @Step("Получение характеристик персонажа с ID: {characterId2}")
+    @Step("Получаем характеристик персонажа с ID: {characterId2}")
+    @Затем("Получаем характеристики 2 персонажа")
     public static void getDataCharacter2(){
 
         getCharacter2 = getCharacter(characterId2, request);
@@ -49,7 +57,8 @@ public class ComparingCharacters {
 
     }
 
-    @Step("Сравнение данных персонажей")
+    @Step("Сравниваем Характеристики персонажей")
+    @И("Сравниваем Характеристики персонажей")
     public static void comparingCharacters() {
 
         String species = getCharacter1.getSpecies();
