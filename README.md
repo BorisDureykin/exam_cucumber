@@ -22,7 +22,7 @@
 ### В пакете src/test/java/steps/edu_jira_gui/collective
 - общие методы по GUI тестам сайта https://edujira.ifellow.ru/
 
-## В классе  src/test/java/tests.CucumberEduJiraGuiRunnerTest.java
+## В классе  src/test/java/tests.GuiEduJiraRunnerTest.java
 находится описание опций для запуска и запуск GUI тестов сайта https://edujira.ifellow.ru/ через Cucumber.
 
 ## В папке src/test/resources/feature/ifellowEdujira.feature
@@ -102,7 +102,7 @@ name и добавляется поле Job
 ## В пакете src/test/java/steps/cucumber_calculator
 находится тестовый класс с необходимой логикой провеки Калькулятора через Cucumber.
 
-## В классе  src/test/java/CucumberCalculatorRunnerTest.java
+## В классе  src/test/java/CalculatorRunnerTest.java
 находится описание опций для запуска и запуск тестов Калькулятора через Cucumber.
 
 ## В файле src/test/resources/feature/calculator.feature
