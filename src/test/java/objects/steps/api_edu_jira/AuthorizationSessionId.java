@@ -42,7 +42,7 @@ public class AuthorizationSessionId extends ResponseAllTests {
         keyPathSchema = params.get("keyPathSchema");
     }
 
-    @Step("Авторизация")
+//    @Step("Авторизация")
     @Тогда("Авторизуемся на сайте")
     public static void authorizationSessionId () {
 

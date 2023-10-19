@@ -13,7 +13,7 @@ import static util.Config.getConfigValue;
 
 public class ProfileIn extends EdujiraIfellowRuSecureDashboard {
 
-    @Step("Заходим в профиль")
+//    @Step("Заходим в профиль")
     @Когда("Заходим в профиль")
     public static void profileIn() {
 
@@ -21,7 +21,7 @@ public class ProfileIn extends EdujiraIfellowRuSecureDashboard {
         buttonCheckVisibilityClick(profileLink, "profileLink");
     }
 
-    @Step("Сверяем имя профиля, ожидаемое значение:  {login}")
+//    @Step("Сверяем имя профиля, ожидаемое значение:  {login}")
     @То("Сверяем имя профиля с {string}")
     public static void checkProfileIn(String keyLogin) {
         String login = getConfigValue(keyLogin);

@@ -23,14 +23,14 @@ public class ComparingCharacters {
     private static String characterId2;
 
 
-    @Step("Получение характеристик персонажа с ID: {characterId}")
+//    @Step("Получение характеристик персонажа с ID: {characterId}")
     @Когда("Получаем на сайте {string} характеристики персонажа с ID: {string}")
     public static void getDataCharacter1(String keyUrl, String characterId){
         request = requestSpecificationAllTests(getConfigValue(keyUrl));
         getCharacter1 = getCharacter(characterId, request);
     }
 
-    @Step("Получаем номер последнего эпизода")
+//    @Step("Получаем номер последнего эпизода")
     @Тогда("Получаем номер последнего эпизода")
     public static void getLastEpisodeNumber(){
         lastEpisodeNumber = getCharacter1.getLastEpisodeNumber();
@@ -48,7 +48,7 @@ public class ComparingCharacters {
     }
 
 
-    @Step("Получаем характеристик персонажа с ID: {characterId2}")
+//    @Step("Получаем характеристик персонажа с ID: {characterId2}")
     @Затем("Получаем характеристики 2 персонажа")
     public static void getDataCharacter2(){
 
@@ -57,7 +57,7 @@ public class ComparingCharacters {
 
     }
 
-    @Step("Сравниваем Характеристики персонажей")
+//    @Step("Сравниваем Характеристики персонажей")
     @И("Сравниваем Характеристики персонажей")
     public static void comparingCharacters() {
 

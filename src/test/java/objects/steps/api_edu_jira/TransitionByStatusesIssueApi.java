@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TransitionByStatusesIssueApi {
 
-    @Step("Перевод задачи по статусам")
+//    @Step("Перевод задачи по статусам")
     @Затем("Переводим созданную задачу по статусам API")
     public static void transitionByStatuses() {
 

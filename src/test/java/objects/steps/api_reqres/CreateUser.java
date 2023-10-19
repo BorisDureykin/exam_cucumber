@@ -42,7 +42,7 @@ public class CreateUser extends ResponseAllTests {
     }
 
 
-    @Step("Создание пользователя с именем: \"{nameValue}\", и job: \"{jobValue}\"")
+//    @Step("Создание пользователя с именем: \"{nameValue}\", и job: \"{jobValue}\"")
     @Тогда("Отправляем запрос на создание пользователя и проверяем полученный ответ")
     public static void createUser() {
 

@@ -35,7 +35,7 @@ public class CreateIssueApi {
         pathSchema = params.get("pathSchema");
     }
 
-    @Step("Создаем задачу в проекте")
+//    @Step("Создаем задачу в проекте")
     @Когда("Создаем задач в проекте")
     public static String createIssueApi() {
 

@@ -21,14 +21,14 @@ public class GoToProjectAntCountIssues extends EdujiraIfellowRuSecureDashboard {
     @Затем("Заходим в проект {string}")
     public static void goToProjectAntCountIssues(String nameCoToProject) {
 
-        step("Заходим в проект: " + nameCoToProject, () -> {
+//        step("Заходим в проект: " + nameCoToProject, () -> {
             buttonCheckVisibilityClick(goToProjectButton, "Project Button");
             buttonCheckVisibilityClick(goToProjectLink, "Project Link");
             buttonCheckVisibilityClick(allIssues, "Задачи");
-        });
+//        });
     }
 
-    @Step("Получение количества задач в проекте:  {nameCoToProject}")
+//    @Step("Получение количества задач в проекте:  {nameCoToProject}")
     @Затем("Выводим количество задач в проекте {string}")
     public static void countIssues(String nameCoToProject) {
 
@@ -38,7 +38,7 @@ public class GoToProjectAntCountIssues extends EdujiraIfellowRuSecureDashboard {
         saveScreenshot("Получение количества задач в проекте: " + nameCoToProject);
     }
 
-    @Step("Сравнение количества задач в проекте:  {nameCoToProject} ожидаемое значение:  {countIssues}")
+//    @Step("Сравнение количества задач в проекте:  {nameCoToProject} ожидаемое значение:  {countIssues}")
     @Тогда("Сравниваем количество задач в проекте {string} полученное по API и отображаемое на экране")
     public static void comparingCountIssues(String nameCoToProject) {
 

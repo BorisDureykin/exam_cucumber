@@ -21,7 +21,7 @@ public class SearchIssue extends EdujiraIfellowRuSecureDashboard {
         buttonCheckVisibilityClick(issueLink, "issueLink");
     }
 
-    @Step("Сверяем поле 'затронуты версии', ожидаемое значение:  {affectedVersion}")
+//    @Step("Сверяем поле 'затронуты версии', ожидаемое значение:  {affectedVersion}")
     @И("Сверяем поле 'затронуты версии', ожидаемое значение: {string}")
     public static void checkAffectedIssue(String affectedVersion) {
 
@@ -32,7 +32,7 @@ public class SearchIssue extends EdujiraIfellowRuSecureDashboard {
     }
 
 
-    @Step("Сверяем статус задачи, ожидаемое значение: {issuesStatus}")
+//    @Step("Сверяем статус задачи, ожидаемое значение: {issuesStatus}")
     @Затем("Сверяем статус задачи с ожидаемым: {string}")
     public static void checkStatusIssue(String issuesStatus) {
 

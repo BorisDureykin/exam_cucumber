@@ -12,7 +12,7 @@ import static util.Config.getConfigValue;
 
 public class TaskTransitionByStatuses extends EdujiraIfellowRuSecureDashboard {
 
-    @Step("Переводим созданную задачу по статусам")
+//    @Step("Переводим созданную задачу по статусам")
     @И("Переводим созданную задачу по статусам GUI")
     public static void taskTransitionByStatuses() {
         String  url = getConfigValue("issueUrl") + CreateIssue.issueKey;

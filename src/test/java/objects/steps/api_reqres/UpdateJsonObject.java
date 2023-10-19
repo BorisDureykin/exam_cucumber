@@ -15,7 +15,7 @@ public class UpdateJsonObject {
     private static UpdateJsonObject instance;
     private JSONObject newUserJson;
 
-    @Step("Создание body с новыми значениями name: \"{nameValue}\", job: \"{jobValue}\"")
+//    @Step("Создание body с новыми значениями name: \"{nameValue}\", job: \"{jobValue}\"")
     @Когда("Изменяем в файле {string} name на: {string} и добавляем поле job с значением {string}")
     public static void updateJsonObject(String filePath, String nameValue, String jobValue) {
         instance = new UpdateJsonObject();

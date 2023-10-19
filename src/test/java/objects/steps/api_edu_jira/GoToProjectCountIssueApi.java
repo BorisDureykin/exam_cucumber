@@ -42,7 +42,7 @@ public class GoToProjectCountIssueApi extends ResponseAllTests {
         pathSchema = params.get("pathSchema");
     }
 
-    @Step("Переходим в проект: \"{projectName}\" и получаем ключ продукта")
+//    @Step("Переходим в проект: \"{projectName}\" и получаем ключ продукта")
     @Тогда("Получаем ключ продукта")
     public static void getProjectKey() {
          RequestSpecification request =  baseAuthorizationRequest();
@@ -69,7 +69,7 @@ public class GoToProjectCountIssueApi extends ResponseAllTests {
 
     @Тогда("Получаем количество задач в проекте API")
     public static void getCountIssuesInProjectApi() {
-        step("Переходим в проект: \"" + projectKey + "\" и получаем количество задач в проекте", () -> {
+//        step("Переходим в проект: \"" + projectKey + "\" и получаем количество задач в проекте", () -> {
             String jqlQuery = "project=" + projectKey + " AND resolution = Unresolved";
 
             RequestSpecification request = baseAuthorizationRequest();
@@ -88,6 +88,6 @@ public class GoToProjectCountIssueApi extends ResponseAllTests {
             saveMessage("Количество задач в проекте: " + projectKey, message);
 
             assertNotNull(countIssueApi, "Нет значения в количестве задач.");
-        });
+//        });
     }
 }

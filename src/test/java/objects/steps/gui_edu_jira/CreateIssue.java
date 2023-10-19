@@ -19,7 +19,7 @@ public class CreateIssue extends EdujiraIfellowRuSecureDashboard {
     @Затем("Создаем задачу с типом Ошибка и темой {string} и получаем номер созданной задачи")
     public static void createIssue(String inputTopic) {
 
-        step("Создаем задачу с типом Ошибка и темой: " + inputTopic + " и получаем номер созданной задачи", () -> {
+//        step("Создаем задачу с типом Ошибка и темой: " + inputTopic + " и получаем номер созданной задачи", () -> {
             buttonCheckVisibilityClick(createBatton, "Create Button");
             assertTrueVisible(issueTypeSelect, "Не отображаестя селектор Тип Задачи.");
             issueTypeSelect.doubleClick();
@@ -54,6 +54,6 @@ public class CreateIssue extends EdujiraIfellowRuSecureDashboard {
                 assertNotNullUtil(issueKey, "Нет номера задачи.");
                 saveScreenshot("Создана задача №: " + issueKey);
             }
-        });
+//        });
     }
 }

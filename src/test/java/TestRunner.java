@@ -18,5 +18,5 @@ import org.junit.runner.RunWith;
                 "html:target/test-output"}
 )
 
-public class RunnerTest {
+public class TestRunner {
 }
