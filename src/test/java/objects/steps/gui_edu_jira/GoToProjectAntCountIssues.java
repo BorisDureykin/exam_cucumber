@@ -2,11 +2,9 @@ package objects.steps.gui_edu_jira;
 
 import io.cucumber.java.ru.Затем;
 import io.cucumber.java.ru.Тогда;
-import io.qameta.allure.Step;
 import objects.elements.EdujiraIfellowRuSecureDashboard;
 
 import static hooks.WebHooks.saveScreenshot;
-import static io.qameta.allure.Allure.step;
 import static objects.elements.EdujiraIfellowRuProjectsTestIssues.allIssues;
 import static objects.elements.EdujiraIfellowRuProjectsTestIssues.countIssues;
 import static objects.steps.api_edu_jira.GoToProjectCountIssueApi.countIssueApi;
@@ -21,24 +19,25 @@ public class GoToProjectAntCountIssues extends EdujiraIfellowRuSecureDashboard {
     @Затем("Заходим в проект {string}")
     public static void goToProjectAntCountIssues(String nameCoToProject) {
 
-//        step("Заходим в проект: " + nameCoToProject, () -> {
-            buttonCheckVisibilityClick(goToProjectButton, "Project Button");
-            buttonCheckVisibilityClick(goToProjectLink, "Project Link");
-            buttonCheckVisibilityClick(allIssues, "Задачи");
-//        });
+        buttonCheckVisibilityClick(goToProjectButton, "Project Button");
+
+        buttonCheckVisibilityClick(goToProjectLink, "Project Link");
+
+        buttonCheckVisibilityClick(allIssues, "Задачи");
     }
 
-//    @Step("Получение количества задач в проекте:  {nameCoToProject}")
     @Затем("Выводим количество задач в проекте {string}")
     public static void countIssues(String nameCoToProject) {
 
         assertTrueVisible(countIssues, "Количество задач не отображается.");
+
         newCountIssuesGui = countIssues.getOwnText().replace("1 из ", "");
+
         assertNotNullUtil(newCountIssuesGui,  "Нет значения в количестве задач.");
+
         saveScreenshot("Получение количества задач в проекте: " + nameCoToProject);
     }
 
-//    @Step("Сравнение количества задач в проекте:  {nameCoToProject} ожидаемое значение:  {countIssues}")
     @Тогда("Сравниваем количество задач в проекте {string} полученное по API и отображаемое на экране")
     public static void comparingCountIssues(String nameCoToProject) {
 

@@ -4,11 +4,9 @@ import io.cucumber.java.ru.Затем;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
-import io.qameta.allure.Step;
 import io.restassured.specification.RequestSpecification;
 
 import static hooks.WebHooks.saveMessage;
-import static io.qameta.allure.Allure.step;
 import static objects.steps.api_all_request_respone.RequestSpecificationAllTests.requestSpecificationAllTests;
 import static objects.steps.api_rick_and_morty.GetCharacter.getCharacter;
 import static objects.steps.api_rick_and_morty.GetEpisode.getEpisode;
@@ -16,48 +14,45 @@ import static util.Config.getConfigValue;
 
 public class ComparingCharacters {
 
-   private static RequestSpecification request;
+    private static RequestSpecification request;
     private static GetCharacter getCharacter1;
     private static GetCharacter getCharacter2;
     private static String lastEpisodeNumber;
     private static String characterId2;
 
 
-//    @Step("Получение характеристик персонажа с ID: {characterId}")
     @Когда("Получаем на сайте {string} характеристики персонажа с ID: {string}")
     public static void getDataCharacter1(String keyUrl, String characterId){
         request = requestSpecificationAllTests(getConfigValue(keyUrl));
         getCharacter1 = getCharacter(characterId, request);
     }
 
-//    @Step("Получаем номер последнего эпизода")
     @Тогда("Получаем номер последнего эпизода")
     public static void getLastEpisodeNumber(){
+
         lastEpisodeNumber = getCharacter1.getLastEpisodeNumber();
+
         String message = "Номер последнего эпизода где появлялся персонаж: "+lastEpisodeNumber;
+
         saveMessage("Номер последнего эпизода" ,message);
     }
 
     @Тогда("Получаем номер номер последнего персонажа в эпизоде")
     public static void getLastCharacterId() {
-        step("Получаем номер последнего персонажа в эпизоде: \"" + lastEpisodeNumber, () -> {
-            characterId2 = getEpisode(lastEpisodeNumber, request);
-            String message = "В эпизоде: "+lastEpisodeNumber+ "Номер последнего персонажа: "+characterId2;
-            saveMessage("Номер последнего персонажа" ,message);
-        });
+
+        characterId2 = getEpisode(lastEpisodeNumber, request);
+
+        String message = "В эпизоде: "+lastEpisodeNumber+ "Номер последнего персонажа: "+characterId2;
+
+        saveMessage("Номер последнего персонажа" ,message);
     }
 
-
-//    @Step("Получаем характеристик персонажа с ID: {characterId2}")
     @Затем("Получаем характеристики 2 персонажа")
     public static void getDataCharacter2(){
 
         getCharacter2 = getCharacter(characterId2, request);
-
-
     }
 
-//    @Step("Сравниваем Характеристики персонажей")
     @И("Сравниваем Характеристики персонажей")
     public static void comparingCharacters() {
 
@@ -70,10 +65,11 @@ public class ComparingCharacters {
         String location2 = getCharacter2.getLocation();
 
         String messageSpecies = species.equals(species2) ? "Принадлежат к одной расе: " + species : "Расы разные: " + species + " и " + species2;
+
         saveMessage("Принадлежность к расам" ,messageSpecies);
+
         String messageLocation = location.equals(location2) ? "Находятся в одной локации: " + location : "Локации разные: " + location + " и " + location2;
+
         saveMessage("Локации персонажей" ,messageLocation);
-
     }
-
 }

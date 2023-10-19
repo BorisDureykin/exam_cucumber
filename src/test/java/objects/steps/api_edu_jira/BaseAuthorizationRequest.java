@@ -10,8 +10,6 @@ import static util.Config.getConfigValue;
 
 public class BaseAuthorizationRequest {
 
-
-
     @Step("Создаем RequestSpecification с Basic Authorization")
     static RequestSpecification baseAuthorizationRequest() {
 

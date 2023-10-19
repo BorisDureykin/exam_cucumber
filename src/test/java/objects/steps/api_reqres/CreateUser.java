@@ -3,7 +3,6 @@ package objects.steps.api_reqres;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Тогда;
-import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import objects.steps.api_all_request_respone.ResponseAllTests;
@@ -42,11 +41,10 @@ public class CreateUser extends ResponseAllTests {
     }
 
 
-//    @Step("Создание пользователя с именем: \"{nameValue}\", и job: \"{jobValue}\"")
     @Тогда("Отправляем запрос на создание пользователя и проверяем полученный ответ")
     public static void createUser() {
 
-       String url = getConfigValue(keyUrl);
+        String url = getConfigValue(keyUrl);
 
         RequestSpecification request = requestSpecificationAllTests(url);
 
@@ -55,9 +53,11 @@ public class CreateUser extends ResponseAllTests {
         Response response = responseGet(request, body, endpoint, method, statusCode, pathSchema);
 
         String message = "Проверяем Поле 'name' и Поле 'job' на соответствие ожидаемым значениям- 'name': " + nameValue + " 'job': " + jobValue;
+
         saveMessage("Проверяем поля ответа ", message);
 
         assertEquals(nameValue, response.path("name"), "Поле 'name' не соответствует ожидаемому значению");
+
         assertEquals(jobValue, response.path("job"), "Поле 'job' не соответствует ожидаемому значению");
     }
 }

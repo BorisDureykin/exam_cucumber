@@ -3,7 +3,6 @@ package objects.steps.api_edu_jira;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Тогда;
-import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import objects.steps.api_all_request_respone.ResponseAllTests;
@@ -42,7 +41,6 @@ public class AuthorizationSessionId extends ResponseAllTests {
         keyPathSchema = params.get("keyPathSchema");
     }
 
-//    @Step("Авторизация")
     @Тогда("Авторизуемся на сайте")
     public static void authorizationSessionId () {
 

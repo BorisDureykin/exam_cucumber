@@ -3,7 +3,6 @@ package objects.steps.api_edu_jira;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
-import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import objects.steps.api_all_request_respone.ResponseAllTests;
@@ -34,8 +33,6 @@ public class CreateIssueApi {
         statusCode = params.get("statusCode");
         pathSchema = params.get("pathSchema");
     }
-
-//    @Step("Создаем задачу в проекте")
     @Когда("Создаем задач в проекте")
     public static String createIssueApi() {
 

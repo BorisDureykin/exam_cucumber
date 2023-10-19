@@ -34,7 +34,6 @@ public class GetCharacter extends ResponseAllTests {
         return lastEpisodeNumber;
     }
 
-
     @Step("Получение данных персонажа с id : \"{id}\"")
     public static GetCharacter getCharacter(String id, RequestSpecification request) {
 
@@ -62,6 +61,4 @@ public class GetCharacter extends ResponseAllTests {
 
         return new GetCharacter(species, location, lastEpisodeNumber);
     }
-
-
 }
