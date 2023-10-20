@@ -42,7 +42,7 @@ public class ResponseAllTests {
         }
         responseNotNull(response);
 
-        statusCodeCheck(response,statusCode);
+        statusCodeCheck(response, statusCode);
 
         if (pathSchema != null) {
 
@@ -68,18 +68,19 @@ public class ResponseAllTests {
 
         String message = "Ожидаемый StatusCode: " + intStatusCode + " Полученный StatusCode: " + actualStatusCode;
 
-        saveMessage("Сверяем полученный статус код с ожидаемым" ,message);
+        saveMessage("Сверяем полученный статус код с ожидаемым", message);
 
         response
                 .then()
                 .statusCode(intStatusCode);
     }
+
     @Step("Сверяем полученный Json со схемой")
     public static void pathSchemaCheck(Response response, String pathSchema) {
 
         String message = "Сверяем полученный Json со схемой: " + pathSchema;
 
-        saveMessage("Сверяем полученный Json" ,message);
+        saveMessage("Сверяем полученный Json", message);
 
         response
                 .then()

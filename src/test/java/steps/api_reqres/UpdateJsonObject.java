@@ -30,7 +30,7 @@ public class UpdateJsonObject {
 
             String message = "Изменен Json новое body: " + instance.newUserJson.toString();
 
-            saveMessage("Изменение Json" ,message);
+            saveMessage("Изменение Json", message);
 
         } catch (IOException e) {
 
@@ -39,6 +39,7 @@ public class UpdateJsonObject {
             instance.newUserJson = new JSONObject();
         }
     }
+
     public static String getJsonObjectToString() {
 
         return instance.newUserJson.toString();

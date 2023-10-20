@@ -22,19 +22,19 @@ public class CucumberStepDefinition extends RequestSpecificationAllTests {
 
 
     @Когда("Получаем на сайте {string} характеристики персонажа с ID: {string}")
-    public static void getDataCharacter1(String keyUrl, String characterId){
+    public static void getDataCharacter1(String keyUrl, String characterId) {
         request = requestSpecificationAllTests(getConfigValue(keyUrl));
         getCharacter1 = getCharacter(characterId, request);
     }
 
     @Тогда("Получаем номер последнего эпизода")
-    public static void getLastEpisodeNumber(){
+    public static void getLastEpisodeNumber() {
 
         lastEpisodeNumber = getCharacter1.getLastEpisodeNumber();
 
-        String message = "Номер последнего эпизода где появлялся персонаж: "+lastEpisodeNumber;
+        String message = "Номер последнего эпизода где появлялся персонаж: " + lastEpisodeNumber;
 
-        saveMessage("Номер последнего эпизода" ,message);
+        saveMessage("Номер последнего эпизода", message);
     }
 
     @Тогда("Получаем номер номер последнего персонажа в эпизоде")
@@ -42,13 +42,13 @@ public class CucumberStepDefinition extends RequestSpecificationAllTests {
 
         characterId2 = getEpisode(lastEpisodeNumber, request);
 
-        String message = "В эпизоде ID: "+ lastEpisodeNumber + " последний персонаж c ID: "+ characterId2;
+        String message = "В эпизоде ID: " + lastEpisodeNumber + " последний персонаж c ID: " + characterId2;
 
-        saveMessage("Номер последнего персонажа в эпизоде "+lastEpisodeNumber ,message);
+        saveMessage("Номер последнего персонажа в эпизоде " + lastEpisodeNumber, message);
     }
 
     @Затем("Получаем характеристики 2 персонажа")
-    public static void getDataCharacter2(){
+    public static void getDataCharacter2() {
 
         getCharacter2 = getCharacter(characterId2, request);
     }
@@ -66,10 +66,10 @@ public class CucumberStepDefinition extends RequestSpecificationAllTests {
 
         String message = species.equals(species2) ? "Принадлежат к одной расе: " + species : "Расы разные: " + species + " и " + species2;
 
-        saveMessage("Принадлежность к расам" ,message);
+        saveMessage("Принадлежность к расам", message);
 
         message = location.equals(location2) ? "Находятся в одной локации: " + location : "Локации разные: " + location + " и " + location2;
 
-        saveMessage("Локации персонажей" ,message);
+        saveMessage("Локации персонажей", message);
     }
 }

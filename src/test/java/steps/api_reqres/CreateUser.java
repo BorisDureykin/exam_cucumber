@@ -28,20 +28,6 @@ public class CreateUser extends ResponseAllTests {
     private static String jobValue;
     private static Response response;
 
-    @Дано("Параметры создания пользователя:")
-    public void setDataTable(DataTable table) {
-        List<Map<String, String>> parameters = table.asMaps(String.class, String.class);
-        Map<String, String> params = parameters.get(0);
-        keyUrl = params.get("keyUrl");
-        endpoint = params.get("endpoint");
-        method = params.get("method");
-        statusCode = params.get("statusCode");
-        pathSchema = params.get("pathSchema");
-        nameValue = params.get("nameValue");
-        jobValue = params.get("jobValue");
-    }
-
-
     @Тогда("Отправляем запрос на создание пользователя")
     public static void createUser() {
 
@@ -73,5 +59,27 @@ public class CreateUser extends ResponseAllTests {
 
         assertEquals(jobValue, actualjob, "Поле 'job' не соответствует ожидаемому значению");
 
+    }
+
+    @Дано("Параметры создания пользователя:")
+    public void setDataTable(DataTable table) {
+
+        List<Map<String, String>> parameters = table.asMaps(String.class, String.class);
+
+        Map<String, String> params = parameters.get(0);
+
+        keyUrl = params.get("keyUrl");
+
+        endpoint = params.get("endpoint");
+
+        method = params.get("method");
+
+        statusCode = params.get("statusCode");
+
+        pathSchema = params.get("pathSchema");
+
+        nameValue = params.get("nameValue");
+
+        jobValue = params.get("jobValue");
     }
 }

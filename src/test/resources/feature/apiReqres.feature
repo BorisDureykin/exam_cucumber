@@ -11,7 +11,7 @@
   Сценарий: Создаем пользователя: изменяем Json файл: изменяя имя и добавляя поле job и отправляем запрос на создание пользователя
     Когда Изменяем в файле "src/test/resources/reqres/user.json" name на: "Tomato" и добавляем поле job с значением "Eat maket"
     Дано Параметры создания пользователя:
-      | keyUrl       |  endpoint    | method | statusCode | pathSchema                         | nameValue | jobValue  |
-      | UrlReqresIn  |  /api/users  | POST   | 201        | reqres/SchemaCreateUserReqres.json | Tomato    | Eat maket |
+      | keyUrl      | endpoint   | method | statusCode | pathSchema                         | nameValue | jobValue  |
+      | UrlReqresIn | /api/users | POST   | 201        | reqres/SchemaCreateUserReqres.json | Tomato    | Eat maket |
     Тогда Отправляем запрос на создание пользователя
     Затем Сверяем ответ с ожидаемым значением полей name и job
