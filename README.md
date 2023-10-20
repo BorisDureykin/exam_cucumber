@@ -1,6 +1,6 @@
 # Экзаменационное задание 2 Cucumber, maven, Rest Assured, allure
 
-### Запуск тестов через терминал: <mvn clean test>
+### Запуск тестов через терминал: mvn clean test
 
 ## Файл src/main/java/util/Config.java
 - Реализована конфигурация системы на использование файла src/test/resources/application.properties
