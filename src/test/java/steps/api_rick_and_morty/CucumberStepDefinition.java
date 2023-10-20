@@ -8,6 +8,7 @@ import io.restassured.specification.RequestSpecification;
 import steps.api_request_respone.RequestSpecificationAllTests;
 
 import static hooks.Hooks.saveMessage;
+import static steps.api_rick_and_morty.GetCharacter.getCharacter;
 import static steps.api_rick_and_morty.GetEpisode.getEpisode;
 import static util.Config.getConfigValue;
 
@@ -23,7 +24,7 @@ public class CucumberStepDefinition extends RequestSpecificationAllTests {
     @Когда("Получаем на сайте {string} характеристики персонажа с ID: {string}")
     public static void getDataCharacter1(String keyUrl, String characterId){
         request = requestSpecificationAllTests(getConfigValue(keyUrl));
-        getCharacter1 = GetCharacter.getCharacter(characterId, request);
+        getCharacter1 = getCharacter(characterId, request);
     }
 
     @Тогда("Получаем номер последнего эпизода")
@@ -49,7 +50,7 @@ public class CucumberStepDefinition extends RequestSpecificationAllTests {
     @Затем("Получаем характеристики 2 персонажа")
     public static void getDataCharacter2(){
 
-        getCharacter2 = GetCharacter.getCharacter(characterId2, request);
+        getCharacter2 = getCharacter(characterId2, request);
     }
 
     @И("Сравниваем Характеристики персонажей")

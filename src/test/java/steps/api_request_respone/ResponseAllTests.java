@@ -51,7 +51,7 @@ public class ResponseAllTests {
         return response;
     }
 
-    @Step("Проверяем ответ на наличие значения и выводим ответ")
+    @Step("Проверяем ответ на наличие значения и сохраняем Response")
     public static void responseNotNull(Response response) {
 
         assertNotNull(response, "Ответ (response) равен null");

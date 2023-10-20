@@ -26,7 +26,6 @@ public class CreateUser extends ResponseAllTests {
     private static String pathSchema;
     private static String nameValue;
     private static String jobValue;
-
     private static Response response;
 
     @Дано("Параметры создания пользователя:")
