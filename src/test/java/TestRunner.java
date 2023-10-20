@@ -5,11 +5,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/feature",
-        glue = {"objects/steps/api_edu_jira",
-                "objects/steps/api_rick_and_morty",
-                "objects/steps/api_reqres",
-                "objects/steps/api_all_request_respone",
-                "objects/steps/gui_edu_jira",
+        glue = {"steps/api_rick_and_morty",
+                "steps/api_open_url",
+                "steps/api_reqres",
+                "steps/api_request_respone",
                 "hooks"},
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         plugin = {"pretty",

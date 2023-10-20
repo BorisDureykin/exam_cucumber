@@ -1,4 +1,4 @@
-package objects.steps.api_reqres;
+package steps.api_reqres;
 
 import io.cucumber.java.ru.Когда;
 import org.json.JSONObject;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static hooks.WebHooks.saveMessage;
+import static hooks.Hooks.saveMessage;
 
 public class UpdateJsonObject {
 

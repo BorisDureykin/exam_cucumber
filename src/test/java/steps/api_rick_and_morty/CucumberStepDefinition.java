@@ -1,18 +1,17 @@
-package objects.steps.api_rick_and_morty;
+package steps.api_rick_and_morty;
 
 import io.cucumber.java.ru.Затем;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import io.restassured.specification.RequestSpecification;
+import steps.api_request_respone.RequestSpecificationAllTests;
 
-import static hooks.WebHooks.saveMessage;
-import static objects.steps.api_all_request_respone.RequestSpecificationAllTests.requestSpecificationAllTests;
-import static objects.steps.api_rick_and_morty.GetCharacter.getCharacter;
-import static objects.steps.api_rick_and_morty.GetEpisode.getEpisode;
+import static hooks.Hooks.saveMessage;
+import static steps.api_rick_and_morty.GetEpisode.getEpisode;
 import static util.Config.getConfigValue;
 
-public class ComparingCharacters {
+public class CucumberStepDefinition extends RequestSpecificationAllTests {
 
     private static RequestSpecification request;
     private static GetCharacter getCharacter1;
@@ -24,7 +23,7 @@ public class ComparingCharacters {
     @Когда("Получаем на сайте {string} характеристики персонажа с ID: {string}")
     public static void getDataCharacter1(String keyUrl, String characterId){
         request = requestSpecificationAllTests(getConfigValue(keyUrl));
-        getCharacter1 = getCharacter(characterId, request);
+        getCharacter1 = GetCharacter.getCharacter(characterId, request);
     }
 
     @Тогда("Получаем номер последнего эпизода")
@@ -42,15 +41,15 @@ public class ComparingCharacters {
 
         characterId2 = getEpisode(lastEpisodeNumber, request);
 
-        String message = "В эпизоде: "+lastEpisodeNumber+ "Номер последнего персонажа: "+characterId2;
+        String message = "В эпизоде ID: "+ lastEpisodeNumber + " последний персонаж c ID: "+ characterId2;
 
-        saveMessage("Номер последнего персонажа" ,message);
+        saveMessage("Номер последнего персонажа в эпизоде "+lastEpisodeNumber ,message);
     }
 
     @Затем("Получаем характеристики 2 персонажа")
     public static void getDataCharacter2(){
 
-        getCharacter2 = getCharacter(characterId2, request);
+        getCharacter2 = GetCharacter.getCharacter(characterId2, request);
     }
 
     @И("Сравниваем Характеристики персонажей")
@@ -64,12 +63,12 @@ public class ComparingCharacters {
 
         String location2 = getCharacter2.getLocation();
 
-        String messageSpecies = species.equals(species2) ? "Принадлежат к одной расе: " + species : "Расы разные: " + species + " и " + species2;
+        String message = species.equals(species2) ? "Принадлежат к одной расе: " + species : "Расы разные: " + species + " и " + species2;
 
-        saveMessage("Принадлежность к расам" ,messageSpecies);
+        saveMessage("Принадлежность к расам" ,message);
 
-        String messageLocation = location.equals(location2) ? "Находятся в одной локации: " + location : "Локации разные: " + location + " и " + location2;
+        message = location.equals(location2) ? "Находятся в одной локации: " + location : "Локации разные: " + location + " и " + location2;
 
-        saveMessage("Локации персонажей" ,messageLocation);
+        saveMessage("Локации персонажей" ,message);
     }
 }

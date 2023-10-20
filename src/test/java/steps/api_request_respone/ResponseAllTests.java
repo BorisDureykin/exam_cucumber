@@ -1,13 +1,12 @@
-package objects.steps.api_all_request_respone;
+package steps.api_request_respone;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-import static hooks.WebHooks.saveMessage;
+import static hooks.Hooks.saveMessage;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ResponseAllTests {
@@ -41,9 +40,27 @@ public class ResponseAllTests {
             default:
                 throw new IllegalArgumentException("HTTP method задан не верно: " + method);
         }
+        responseNotNull(response);
+
+        statusCodeCheck(response,statusCode);
+
+        if (pathSchema != null) {
+
+            pathSchemaCheck(response, pathSchema);
+        }
+        return response;
+    }
+
+    @Step("Проверяем ответ на наличие значения и выводим ответ")
+    public static void responseNotNull(Response response) {
+
         assertNotNull(response, "Ответ (response) равен null");
 
         Allure.addAttachment("API Response", "application/json", response.asString());
+    }
+
+    @Step("Проверяем statusCode")
+    public static void statusCodeCheck(Response response, String statusCode) {
 
         int intStatusCode = Integer.parseInt(statusCode);
 
@@ -53,15 +70,21 @@ public class ResponseAllTests {
 
         saveMessage("Сверяем полученный статус код с ожидаемым" ,message);
 
-        assertEquals(intStatusCode, actualStatusCode, "StatusCode не соответствует ожидаемому значению");
+        response
+                .then()
+                .statusCode(intStatusCode);
+    }
+    @Step("Сверяем полученный Json со схемой")
+    public static void pathSchemaCheck(Response response, String pathSchema) {
 
-        if (pathSchema != null) {
-            response
-                    .then()
-                    .assertThat()
-                    .body(matchesJsonSchemaInClasspath(pathSchema));
-        }
-        return response;
+        String message = "Сверяем полученный Json со схемой: " + pathSchema;
+
+        saveMessage("Сверяем полученный Json" ,message);
+
+        response
+                .then()
+                .assertThat()
+                .body(matchesJsonSchemaInClasspath(pathSchema));
     }
 }
 

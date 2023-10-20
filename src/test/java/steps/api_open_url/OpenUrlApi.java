@@ -1,12 +1,12 @@
-package objects.steps.api_all_request_respone;
+package steps.api_open_url;
 
 import io.cucumber.java.ru.Когда;
+import steps.api_request_respone.RequestSpecificationAllTests;
+import steps.api_request_respone.ResponseAllTests;
 
-import static objects.steps.api_all_request_respone.RequestSpecificationAllTests.requestSpecificationAllTests;
-import static objects.steps.api_all_request_respone.ResponseAllTests.responseGet;
 import static util.Config.getConfigValue;
 
-public class OpenUrlApi {
+public class OpenUrlApi extends RequestSpecificationAllTests {
 
 
     @Когда("Открываем {string}, c endpoint = {string},  method = {string} сверяем statusCode = {string} и  pathSchema = {string}")
@@ -14,6 +14,6 @@ public class OpenUrlApi {
 
         String url = getConfigValue(keyUrl);
 
-        responseGet(requestSpecificationAllTests(url), null, endpoint, method, statusCode, pathSchema);
+        ResponseAllTests.responseGet(requestSpecificationAllTests(url), null, endpoint, method, statusCode, pathSchema);
     }
 }

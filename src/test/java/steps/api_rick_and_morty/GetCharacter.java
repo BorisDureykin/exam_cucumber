@@ -1,12 +1,12 @@
-package objects.steps.api_rick_and_morty;
+package steps.api_rick_and_morty;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import objects.steps.api_all_request_respone.ResponseAllTests;
 import org.json.JSONObject;
+import steps.api_request_respone.ResponseAllTests;
 
-import static hooks.WebHooks.saveMessage;
+import static hooks.Hooks.saveMessage;
 
 
 public class GetCharacter extends ResponseAllTests {

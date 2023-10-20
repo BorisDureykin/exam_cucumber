@@ -10,7 +10,7 @@
 ## В пакете src/test/java/tests
 находится файлы с описанием и запуск тестов
 
-## В пакете src/test/java/objects/elements
+## В пакете src/test/java/steps/elements
 содержаться файлы с Xpath по страницам сайта https://edujira.ifellow.ru/
 
 ## В пакете src/test/java/steps
